@@ -1,0 +1,10 @@
+#adminmenu .toplevel_page_wallet div.wp-menu-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#adminmenu .toplevel_page_wallet div.wp-menu-image img {
+    padding: 0;
+    width: 26px;
+    opacity: 0.8;
+}

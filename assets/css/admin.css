@@ -1,0 +1,323 @@
+div#wpcontent {
+  background: #242731;
+  color: #ffffff;
+  padding-right: 20px;
+}
+
+h2.page-title {
+  color: white;
+}
+
+.wallet-list-wrap {
+  display: flex;
+  flex-direction: column;
+  background: #242731;
+  color: #ffffff;
+  padding: 25px 0 25px;
+  border-radius: 24px;
+  box-shadow: 0 0 20px #0000007a;
+}
+.wallet-list-wrap .wallet-table-head,
+.wallet-list-wrap .wallet-table .wallet-item-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr clamp(100px, 10vw, 160px) clamp(140px, 12vw, 180px);
+  font-size: 16px;
+  padding: 12px 30px;
+  align-items: center;
+  position: relative;
+}
+.wallet-list-wrap .wallet-table .wallet-item-row:nth-child(2n+1) {
+  background: #00000012;
+}
+.wallet-list-wrap .wallet-table-head {
+  font-weight: 600;
+}
+.wallet-list-wrap .td-item[data-col=user] {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.wallet-list-wrap .td-item[data-col=user] a:first-child {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+.wallet-list-wrap .td-item[data-col=user] a:first-child:hover {
+  text-decoration: underline;
+}
+.wallet-list-wrap :is(.td-item, .th-item):is([data-col=balance], [data-col=orders]) {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+.wallet-list-wrap .wallet-table .wallet-item-row:not(.wallet-active) .td-item[data-col=balance] {
+  opacity: 0.2;
+}
+.wallet-list-wrap .td-item[data-col=balance] {
+  display: flex;
+  flex-direction: column;
+}
+.wallet-list-wrap .td-item[data-col=balance] .balance-final {
+  font-size: 14px;
+  line-height: 1;
+}
+.wallet-list-wrap .wallet-item-row:after {
+  display: flex;
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  opacity: 0.04;
+}
+.wallet-list-wrap .wallet-item-row.record-balance-use:after {
+  background: red;
+}
+.wallet-list-wrap .wallet-item-row.record-balance-use .td-item[data-col=balance] .balance-change {
+  color: #eb4848;
+}
+.wallet-list-wrap .wallet-item-row.record-balance-add:after {
+  background: green;
+}
+.wallet-list-wrap .wallet-item-row.record-balance-add .td-item[data-col=balance] .balance-change {
+  color: #5ef55e;
+}
+.wallet-list-wrap a.edit-user {
+  opacity: 0;
+}
+.wallet-list-wrap .wallet-item-row:hover a.edit-user {
+  opacity: 1;
+}
+
+.wallet-navigation {
+  padding: 25px 30px 0;
+}
+
+nav.wallet-pagination {
+  display: flex;
+  gap: 4px;
+}
+nav.wallet-pagination .pagination-link-wrap {
+  display: flex;
+  width: 2em;
+  aspect-ratio: 1;
+  background: #3d3f49;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: 0.3s;
+  font-family: monospace;
+}
+nav.wallet-pagination .pagination-link-wrap:where(.active,:hover,:focus-within) {
+  background: #47556b;
+}
+nav.wallet-pagination .pagination-link-wrap :where(a,span) {
+  color: white;
+  text-decoration: none;
+  opacity: 0.8;
+  user-select: none;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav.wallet-pagination .pagination-link-wrap :where(a,span):focus {
+  box-shadow: none;
+}
+
+.wallet-popup-wrap {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  backdrop-filter: blur(4px);
+  background: #ffffff26;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 250ms ease;
+}
+.wallet-popup-wrap.open {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 99999;
+}
+
+.wallet-popup {
+  display: none;
+  width: 500px;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 20px;
+  background: #242731;
+  box-shadow: 0 0 20px #00000085;
+  border-radius: 20px;
+  position: relative;
+  max-width: 100vw;
+}
+.wallet-popup.popup-open {
+  display: flex;
+}
+.wallet-popup h2 {
+  color: white;
+  font-size: 24px;
+  margin-top: 0;
+}
+.wallet-popup .wallet-popup-close {
+  position: absolute;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.wallet-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.wallet-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.wallet-form label .label {
+  font-size: 16px;
+  line-height: 1.2;
+}
+.wallet-form label input {
+  background: transparent;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 15px;
+}
+
+.wallet-btn {
+  border: 1px solid white;
+  border-radius: 25px;
+  background: transparent;
+  color: white;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  text-align-last: center;
+  justify-content: center;
+  transition: all 250ms ease;
+}
+.wallet-btn > button {
+  color: inherit;
+  background: transparent;
+  border: none;
+  width: 100%;
+  padding: 0;
+  text-align: center;
+  height: auto;
+  cursor: pointer;
+  line-height: 1;
+}
+.wallet-btn:hover {
+  color: #242731;
+  background: white;
+}
+
+.widget-active-balance {
+  font-size: 20px;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  display: inline-block;
+  margin-right: 10px;
+}
+.widget-active-balance .woocommerce-Price-amount.amount {
+  font-size: 24px;
+}
+
+.wallet-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.wallet-search form#search-form {
+  position: relative;
+  display: flex;
+  width: 300px;
+  margin: 20px 0;
+  padding: 0;
+  align-items: center;
+  max-width: 100%;
+  transition: all 250ms ease;
+}
+.wallet-search label.search-label {
+  width: 100%;
+  height: 100%;
+}
+.wallet-search label.search-label input {
+  background: transparent;
+  width: 100%;
+  border-radius: 30px;
+  border: 1px solid white;
+  padding: 5px 15px;
+  height: 40px;
+  line-height: 1;
+  display: flex;
+  font-size: 18px;
+  color: white;
+}
+.wallet-search label.submit-label {
+  display: flex;
+  position: absolute;
+  right: 10px;
+  width: 24px;
+  aspect-ratio: 1;
+  padding-bottom: 4px;
+}
+.wallet-search label.submit-label input {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.wallet-search label.submit-label .icon {
+  width: 100%;
+  height: 100%;
+}
+.wallet-search label.submit-label .icon svg {
+  fill: white;
+}
+.wallet-search:focus-within form#search-form {
+  width: 100%;
+}
+.wallet-search .search-results {
+  margin-bottom: 80px;
+}
+.wallet-search .search-results h2 {
+  color: white;
+  font-size: 24px;
+}
+
+.pending-balance {
+  opacity: 0.5;
+}
+.pending-balance:before {
+  content: "";
+  background: url(../icons/pending.svg);
+  width: 0.7em;
+  aspect-ratio: 1;
+  display: inline-flex;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 2px;
+}
+
+.wallet-referral-code {
+  color: gold;
+  background: black;
+  padding: 4px 12px 6px;
+  line-height: 1;
+  border: 2px dashed;
+  margin: 2px;
+}
+
+/*# sourceMappingURL=admin.css.map */
